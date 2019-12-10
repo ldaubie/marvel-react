@@ -27,7 +27,7 @@ const HeroList = () => {
         const tabComic = []
         for (let i = 0; i < 3; i++){
             if (comics[i])
-                tabComic.push(<Typography variant="body2" color="textSecondary" component="p"  key={comics[i].name}>- {comics[i].name}</Typography>)
+                tabComic.push(<Typography variant="body2" color="textSecondary" component="p"  key={comics[i].name}>- {comics[i].name}</Typography>);
         }
         return tabComic;
     }
