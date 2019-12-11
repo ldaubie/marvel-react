@@ -1,26 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import HeroList from './components/HeroList';
 import Loader from './components/Loader';
-import callApi from './callApi';
+import useApp from './useApp';
 
 const App = () => {
-  const [characters, setCharacters] = useState([]);
-  const [loader, setLoader] = useState(true);
+  const editing = useApp();
 
-  useEffect(() => {
-    const fetchData = async () => {
-        const charactersToSet = await callApi();
-        setCharacters(charactersToSet);
-        setLoader(false);
-    }
-
-      fetchData();
-  }, []);
-
-  if (loader){
+  if (editing.loader){
     return <Loader />
   }else{
-      return <HeroList characters={characters} />
+      return <HeroList characters={editing.characters} />
   }
 }
 

@@ -14,6 +14,7 @@ const HeroList = (props) => {
                     );
                 })}
             </List>
+            <Footer />
         </Grid>
     );
 }

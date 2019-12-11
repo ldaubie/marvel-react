@@ -1,17 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Card, CardMedia, CardContent, Typography } from '@material-ui/core';
 import HeroDetails from './HeroDetails';
+import useHeroCard from './useHeroCard';
 
 const HeroCard = (props) => {
     const { character } = props;
-    const [selectedCharacters, setSelectedCharacters] = useState();
-
-    const handleOnClick = characterName => {
-        if (selectedCharacters === characterName)
-            setSelectedCharacters();
-        else
-            setSelectedCharacters(characterName);
-    }
+    const editing = useHeroCard();
 
     return(
         <Card style={{maxWidth: 345}}>
@@ -22,9 +16,9 @@ const HeroCard = (props) => {
                 height="140"
                 image={`${character.thumbnail.path}.${character.thumbnail.extension}`}  />
             <CardContent>
-                <Typography gutterBottom variant="h5" component="h2" onClick={() => { handleOnClick(character.name) }} data-testid="HeroCardName">{character.name}</Typography>
+                <Typography gutterBottom variant="h5" component="h2" onClick={() => { editing.handleOnClick(character.name) }} data-testid="HeroCardName">{character.name}</Typography>
                 {
-                    selectedCharacters === character.name ?  
+                    editing.selectedCharacters === character.name ?  
                     <HeroDetails character={character} />
                     : null 
                 }
