@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Card, CardMedia, CardContent, Typography, Grid } from '@material-ui/core';
+import { Card, CardMedia, CardContent, Typography } from '@material-ui/core';
 import HeroDetails from './HeroDetails';
 
 const HeroCard = (props) => {
@@ -14,14 +14,15 @@ const HeroCard = (props) => {
     }
 
     return(
-        <Card style={{maxWidth: 345}} key={character.id}>
+        <Card style={{maxWidth: 345}}>
             <CardMedia
+                data-testid="HeroCardImg"
                 component="img"
                 alt={character.name}
                 height="140"
                 image={`${character.thumbnail.path}.${character.thumbnail.extension}`}  />
             <CardContent>
-                <Typography gutterBottom variant="h5" component="h2" onClick={() => { handleOnClick(character.name) }}>{character.name}</Typography>
+                <Typography gutterBottom variant="h5" component="h2" onClick={() => { handleOnClick(character.name) }} data-testid="HeroCardName">{character.name}</Typography>
                 {
                     selectedCharacters === character.name ?  
                     <HeroDetails character={character} />

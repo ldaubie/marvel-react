@@ -8,19 +8,19 @@ const HeroDetails = (props) => {
         const tabComic = []
         for (let i = 0; i < 3; i++){
             if (comics[i])
-                tabComic.push(<Typography variant="body2" color="textSecondary" component="p"  key={comics[i].name}>- {comics[i].name}</Typography>);
+                tabComic.push(<Typography variant="body2" color="textSecondary" component="p"  key={comics[i].name} data-testid="HeroDetailsFirstComics">- {comics[i].name}</Typography>);
         }
         return tabComic;
     }
 
     return (
         <Grid>
-            <Typography variant="body2" color="textSecondary" component="p">
+            <Typography variant="body2" color="textSecondary" component="p" data-testid="HeroDetailsDescription">
                 {character.description ? character.description : 'Description missing'}
             </Typography> 
             <Typography variant="subtitle1" component="h2" >
                 Number of appearance in comic: 
-                <Typography variant="body2" color="textSecondary" component="p">
+                <Typography variant="body2" color="textSecondary" component="p" data-testid="HeroDeatailNumberOfAppearance">
                     {character.comics.available}
                 </Typography> 
             </Typography>
